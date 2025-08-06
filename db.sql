@@ -1,28 +1,4 @@
--- ================================
--- DROP OLD DATABASE AND CREATE NEW ONE
--- ================================
 
--- 1. BACKUP DATABASE CŨ (QUAN TRỌNG!)
--- Chạy lệnh này trước khi drop để backup data
-SHOW DATABASES;
--- Thay 'your_old_database_name' bằng tên database thực tế của bạn
--- mysqldump -u username -p your_old_database_name > backup_$(date +%Y%m%d_%H%M%S).sql
-
--- 2. DROP DATABASE CŨ
--- Thay 'your_old_database_name' bằng tên database của bạn
-DROP DATABASE IF EXISTS your_old_database_name;
-
--- 3. TẠO DATABASE MỚI
-CREATE DATABASE pod_booking_system 
-CHARACTER SET utf8mb4 
-COLLATE utf8mb4_unicode_ci;
-
--- 4. SỬ DỤNG DATABASE MỚI
-USE pod_booking_system;
-
--- ================================
--- TẠO SCHEMA MỚI HOÀN CHỈNH
--- ================================
 
 -- 1. ROLES TABLE
 CREATE TABLE roles (
@@ -382,14 +358,7 @@ INSERT INTO services (name, category, price, unit, description) VALUES
 ('External Monitor', 'equipment', 50000, 'hour', '24-inch external monitor rental'),
 ('Meeting Room Upgrade', 'meeting_room', 100000, 'hour', 'Upgrade to premium meeting room');
 
--- ================================
--- SHOW CREATED TABLES
--- ================================
-SHOW TABLES;
 
--- ================================
--- VERIFICATION QUERIES
--- ================================
 SELECT 'Database created successfully!' as status;
 SELECT COUNT(*) as total_tables FROM information_schema.tables WHERE table_schema = 'pod_booking_system';
 SELECT table_name FROM information_schema.tables WHERE table_schema = 'pod_booking_system' ORDER BY table_name;
