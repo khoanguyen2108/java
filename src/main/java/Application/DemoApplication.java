@@ -14,6 +14,8 @@ public class DemoApplication {
     @RestController
     public static class HelloController {
 
+        @GetMapping("/api/getbooking")
+        public String getBooking() {return "Hello World!";}
         @GetMapping("/api/hello")
         public String sayHello() {
             return "Hello from Spring Boot!";
